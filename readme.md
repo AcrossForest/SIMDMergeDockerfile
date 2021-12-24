@@ -59,7 +59,7 @@ Result match
 [      Diff SIMD]       mean =   1.49e+04(ns)   sd =   7.69e+01(ns)     nsample =     5
 ```
 
-Here, for example, "Union Scalar" is the execution time of set-union of baseline, and "Union SIMD" is the execution time of proposed solution *FOR SIMD 16*. To obtain the results for other SIMD width, you need to set *SIMD_WIDTH* in above base code snippet to other values {4,8,16,32,64}. Because changing the SIMD width dose not influcence the scalar baseline performance,  you will found the execution time of "xxxx Scalar" dose not change for different *SIMD_WIDTH* and you only need to collect once. (So you can set SCALAR_REPEAT=1 starting from the second SIMD_WIDTH to save some running time).
+Here, for example, "Union Scalar" is the execution time of set-union of baseline, and "Union SIMD" is the execution time of proposed solution *FOR SIMD 16*. To obtain the results for other SIMD width, you need to set *SIMD_WIDTH* in above base code snippet to other values {4,8,16,32,64}. Because changing the SIMD width dose not influcence the scalar baseline performance,  you will found the execution time of "{kernel name} Scalar" dose not change for different *SIMD_WIDTH* and you only need to collect once. (So you can set SCALAR_REPEAT=1 starting from the second SIMD_WIDTH to save some running time).
 
 ## Second half: Join-{Inner,Full-Outer,Outer-Excluding,Left-Exluding,Left}
 Run the binary JoinOp. For example, to test SIMD width 16, run following:
@@ -205,7 +205,7 @@ Similar to the scenario of above SetOperation, you need to *SIMD_WIDTH* to other
 Now, we can compute the throughput using the execution time. In this expriment, both inputs has 10000 elements. So the throughput=((size(a)+size(b))/execution time)= ((10000+10000)/execution time). We can use the throughput numbers to draw Figure 12.
 
 ## Figure 14
-Figure 13 contains only one kernel: sorting kernel. We consider 4 implementations:
+Figure 14 contains only one kernel: sorting kernel. We consider 4 implementations:
 + std::sort: which is quicksort (scalar baseline 1)
 + std::stable_sort: which is merge sort (scalar baseline 2)
 + Bramas SIMD: which is a SIMD-based sort (SIMD baseline)
